@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        body::webkit-scrollbar {
+            display: none;
+        }
+
+        .clock {
+            font-size: 5rem;
+            text-align: center;
+            background-color: #61dafb;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock-container">
+        <h1 class="clock">00:00:00</h1>
+
+
+    </div>
+    <audio id="alarm-sound" src="./12_Project_1_ticking-clock.mp3" preload="auto"></audio>
+    <script>
+
+
+
+
+        setInterval(() => {
+            const element = document.querySelector('.clock') // isse yei h1 tag javascript mei aajayega
+            const sound = document.querySelector('#alarm-sound'); // isse yei audio tag javascript mei aajayega
+            element.textContent = "00:00:00"; // isse h1 tag mei 00:00:00 likh dega
+
+            const time = new Date(); // isse current time mil jayega
+            const option = {
+                timezone: 'Asia/Kolkata', // isse time zone set kar dega
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+
+            }
+
+            element.textContent = time.toLocaleTimeString('en-US', option); // isse h1 tag mei current time likh dega
+            sound.play(); // isse audio play ho jayega
+        }, 1000); // 1000 milliseconds = 1 second
+
+
+
+
+
+        // console.log(element);
+    </script>
+</body>
+
+</html>
